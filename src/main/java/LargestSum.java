@@ -1,5 +1,5 @@
 
-import java.util.List;
+import java.util.*;
 
 public class LargestSum {
     /**
@@ -10,6 +10,31 @@ public class LargestSum {
      * @return the largest possible sum of separate numbers from nums.
      */
     public int bigSum(List<Integer> nums){
-        return 0;
+        List<Integer> copy = new ArrayList<>();
+        copy = nums;
+
+        // Find 1st largest
+        int x = getLargest(copy);
+
+        // Remove the largest from copy
+        int idx = copy.indexOf(x);
+        copy.remove(idx);
+
+        // Find  2nd largest
+        int y = getLargest(copy);
+
+        return x+y;
     }
+
+    public int getLargest(List<Integer> list) {
+        int x = list.get(0);
+        for (int num : list) {
+            if (num > x) {
+                x = num;
+            }
+        }
+    return x;
+}
+
+
 }
